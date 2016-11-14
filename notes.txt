@@ -43,7 +43,7 @@ package.json file
 
 then a build tool
 
-instead of typing React.Component just use an import from the module
+instead of typing React.Component just use an import from the module.
 
 
 
