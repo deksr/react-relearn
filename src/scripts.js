@@ -8,7 +8,9 @@ import React, { Component } from 'react';
 
 class Hello extends React.Component {
   render() {
-    return <h1>Hello</h1>
+
+	  var place = "Earth"
+    return <h1>Hello {place}</h1>
   }
 }
 
