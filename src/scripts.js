@@ -5,97 +5,73 @@ import React, { Component } from 'react';
 
 // instead of typing React.Component hust use an import from the module
 
-
-// this is the parent component
-// class TheParent extends React.Component {
-//   render() {
-//     return (
-// 	    <ul> 
-// 	      <TheChild name= "ann" age="23"/> 
-// 	      <TheChild name= "bob" age="20"/> 
-// 	      <TheChild age="24"> Sam </TheChild>
-// 	      <TheChild age="21">Ron</TheChild>
-// 	    </ul>
-// 	  )
-//   }
-// }
-
-// // this is the child component
-// class TheChild extends React.Component {
-//   render() {
-//     return(
-// 	    <li>{this.props.name} + {this.props.age} 
-// 	    {/* or can be written as  */}
-// 	    {this.props.children} </li>
-// 	  ) 
-//   }
-// }
-
+// a simple react element
+// var reactelem =React.createElement('h1');
 
 // ReactDOM.render(
-// 	<TheParent/>, 
+//   reactelem, 
+//   document.getElementById('hello')
+// );
+
+
+//adding a simple  props parameter
+// var reactelem =React.createElement('h1', {className: 'color-class'});
+
+// ReactDOM.render(
+// 	reactelem, 
 // 	document.getElementById('hello')
 // );
 
 
-let plants = [{
-	id: 1,
-	name: "Shrub roses",
-	color: "Reddish pink",
-	quantity: '2'
-},
-{
-	id: 2,
-	name: "English lavander",
-	color: "lavander",
-	quantity: '5'
-},
-{
-	id: 3,
-	name: "Hydrangias",
-	color: "blue",
-	quantity: '10'
-}]
+//adding a simple  children parameter
+// var reactelem =React.createElement('h1', {className: 'color-class'}, 'this is cool');
 
-class Plant extends React.Component{
-  render(){
-    //4
-  	return (
-  		<li> {this.props.plant.name}, {this.props.plant.color} 
-      </li>
-  	)
-  }
-}
+// ReactDOM.render(
+//   reactelem, 
+//   document.getElementById('hello')
+// );
 
-class Plants extends React.Component{
-  render(){
-  	//5. run map/foreach plant
-  	return (
-  		<ul> 
-	  		{this.props.plants.map((plant)=>{
-	  			return <Plant key={plant.id} plant={plant} />
-	  		})} 
-  		</ul>
-  	)
-  }
-}
 
-class List extends Component{
-  render(){
-  	return (
-  		<div> 
-  		  <h4> Garden plant list </h4>
-  		  <Plants plants={this.props.plants}/>
-  		</div>
-  	)
-  }
-}
 
-ReactDOM.render( 
-	<div>
-	//2
-		<List plants={plants}> </List>
-  </div>
-  , document.getElementById('content')
-);
+// adding fragmentnode
+// var heading =React.createElement('h1', {className: 'color-class', key:
+//    'header' }, 'headline');
+// var para = React.createElement('p', {className: 'color-class'}, 'some text');
+// var fragment = [heading, para];
+
+// var insidesection = React.createElement('section', {className: 'color-class'},fragment);
+
+
+// ReactDOM.render(
+//   insidesection, 
+//   document.getElementById('hello')
+// );
+
+// wriiten in es5
+// var ReactClass = React.createClass({
+//   render: function () {
+//     return React.createElement('h1', { className: 'header' }, 'React
+//    Component');
+//   } 
+// });
+
+// var reactComponentElement = React.createElement(ReactClass);
+// var reactComponent = ReactDOM.render(reactComponentElement, document.getElementById('react-application'));
+
+// written in es6
+// class ReactClass extends React.Component { 
+//   render() {
+//     var place = "Component"; 
+//     return (
+//       <h1>React {place}</h1> 
+//     );
+//   } 
+// }
+
+// ReactDOM.render(<ReactClass />, document.getElementById("root"));
+
+
+
+
+
 
