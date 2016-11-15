@@ -46,4 +46,8 @@ then a build tool
 instead of typing React.Component just use an import from the module
 
 
+to comment out in react app:
+{/* or can be written as  */}
+
+
 
