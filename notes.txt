@@ -1,3 +1,50 @@
 configuration got from this:
 
 https://www.twilio.com/blog/2015/08/setting-up-react-for-es6-with-webpack-and-babel-2.html
+
+
+Branch 
+chapterone notes:
+*****************
+
+//this is written in javascript
+var MyClass = React.createClass({
+  render: function() {
+    return (
+      <div>hello world</div>
+    );
+  } 
+});
+
+//or by writing in ES6 such as this one:
+class MyClass extends React.Component {
+  render() {
+    return <div>hello world</div>;
+  }
+}
+
+react dom.render vs react dom
+http://stackoverflow.com/questions/33007402/is-there-any-difference-between-react-render-and-reactdom-render
+
+React is the library for creating views. ReactDOM is the library used to actually render the UI in the browser.
+
+//map, reduce, and assign.
+
+/////////////////
+to create react app:
+basic folder set up needed:
+public > source
+
+create source folder where which contains all javascript modules
+
+index.html outside of source folder
+
+package.json file
+
+then a build tool
+
+instead of typing React.Component just use an import from the module
+
+
+to comment out in react app:
+{/* or can be written as  */}
