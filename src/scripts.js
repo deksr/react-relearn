@@ -5,71 +5,167 @@ import React, { Component } from 'react';
 
 // instead of typing React.Component hust use an import from the module
 
-// a simple react element
-// var reactelem =React.createElement('h1');
 
-// ReactDOM.render(
-//   reactelem, 
-//   document.getElementById('hello')
-// );
-
-
-//adding a simple  props parameter
-// var reactelem =React.createElement('h1', {className: 'color-class'});
-
-// ReactDOM.render(
-// 	reactelem, 
-// 	document.getElementById('hello')
-// );
-
-
-//adding a simple  children parameter
-// var reactelem =React.createElement('h1', {className: 'color-class'}, 'this is cool');
-
-// ReactDOM.render(
-//   reactelem, 
-//   document.getElementById('hello')
-// );
-
-
-
-// adding fragmentnode
-// var heading =React.createElement('h1', {className: 'color-class', key:
-//    'header' }, 'headline');
-// var para = React.createElement('p', {className: 'color-class'}, 'some text');
-// var fragment = [heading, para];
-
-// var insidesection = React.createElement('section', {className: 'color-class'},fragment);
-
-
-// ReactDOM.render(
-//   insidesection, 
-//   document.getElementById('hello')
-// );
-
-// wriiten in es5
-// var ReactClass = React.createClass({
+// writing a simple component in es5
+// ************************
+// var App = React.createClass({
 //   render: function () {
-//     return React.createElement('h1', { className: 'header' }, 'React
-//    Component');
+//     return <h1 > hi there how cool is this </h1>
+//   } 
+// });
+// ReactDOM.render(<App />, document.getElementById("root"));
+
+
+// writing parent and child relationship
+// ************************
+
+// Child
+// var User = React.createClass({
+//   render: function () {
+//     return (
+//       <ul> 
+//         <li > Brad </li>
+//         <li > Mary </li>
+//         <li > Ron </li>
+//       </ul>
+//     )
 //   } 
 // });
 
-// var reactComponentElement = React.createElement(ReactClass);
-// var reactComponent = ReactDOM.render(reactComponentElement, document.getElementById('react-application'));
 
-// written in es6
-// class ReactClass extends React.Component { 
-//   render() {
-//     var place = "Component"; 
+// // parent
+// var App = React.createClass({
+//   render: function () {
 //     return (
-//       <h1>React {place}</h1> 
-//     );
+//       <div> 
+//         <h1> Users List </h1>
+//         <User />
+//       </div>
+//     )
 //   } 
-// }
+// });
+// ReactDOM.render(<App />, document.getElementById("root"));
 
-// ReactDOM.render(<ReactClass />, document.getElementById("root"));
 
+// // writing props
+// // ************************
+
+
+
+// // child
+// var User = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//       //
+//       {this.props.name}:: <a href={'httpS://twitter.com/' + this.props.twitter}>Click for link to twitter </a>
+//       </div>
+//     )
+//   } 
+// });
+
+// // parent
+// var App = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//         <h1> Users List </h1>
+//         <User name = "Brad" twitter="CNN"/>
+//         <User name = "Mary" twitter="bbc"/>
+//         <User name = "Ron" twitter="nyt"/>
+//       </div>
+//     )
+//   } 
+// });
+
+
+// // parent of parent
+// ReactDOM.render(<App />, document.getElementById("root"));
+
+
+// // passing data between parents to child
+// // ************************
+
+// // child 
+// var User = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//       //
+//       {this.props.name}:: <a href={'httpS://twitter.com/' + this.props.twitter}>Click for link to twitter </a>
+//       {this.props.sd}
+//       </div>
+//     )
+//   } 
+// });
+
+// // parent of User
+// var App = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//         <h1> Users List </h1>
+//         <User name = "Brad" twitter="CNN"/>
+//         <User name = "Mary" twitter="bbc"/>
+//         <User name = "Ron" twitter="nyt"/>
+//         {this.props.somedata}
+//         <User name = "Cindy" twitter="fox" sd= {this.props.somedata}/>
+//       </div>
+//     )
+//   } 
+// });
+
+
+// // parent of App
+// ReactDOM.render(<App somedata = "this is cool girl here"/>, document.getElementById("root"));
+
+
+
+// uisng conditions and adding more methods 
+// ************************
+
+// child 
+var User = React.createClass({
+  render: function () {
+
+    if (this.props.sd=="this is cool girl here"){
+      return  <div> {this.props.name}  has  {this.props.sd} </div>
+    }
+    else{
+      return  <div> {this.props.name} : no extra information available </div> 
+    } 
+  },
+
+  renderOtherMethod: function(){
+    if (this.props.name=="cindy"){
+      return  <div> {this.props.name}  : has so much swag </div>
+    }
+  }
+
+
+
+
+});
+
+// parent of User
+var App = React.createClass({
+  render: function () {
+    return (
+      <div> 
+        <h1> Users List </h1>
+        <User name = "Brad" twitter="CNN"/>
+        <User name = "Mary" twitter="bbc"/>
+        <User name = "Ron" twitter="nyt"/>
+        {this.props.somedata}
+        <User name = "Cindy" twitter="fox" sd= {this.props.somedata}/>
+      </div>
+    )
+  } 
+});
+
+
+// parent of App
+ReactDOM.render(<App somedata = "this is cool girl here"/>, document.getElementById("root"));
 
 
 
