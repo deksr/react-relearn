@@ -48,3 +48,10 @@ instead of typing React.Component just use an import from the module
 
 to comment out in react app:
 {/* or can be written as  */}
+
+state and stateless:
+
+
+Jsx helps us write code in html syntax inside javascript.
+
+Es6 is compiled to es5 in browsers through babel
