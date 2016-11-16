@@ -55,3 +55,14 @@ state and stateless:
 Jsx helps us write code in html syntax inside javascript.
 
 Es6 is compiled to es5 in browsers through babel
+
+
+if (true) {
+    console.log(1)
+} 
+else {
+    console.log(0)
+}
+
+var operator = true ? 1 : 0
+console.log(operator)
