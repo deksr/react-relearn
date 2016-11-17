@@ -58,3 +58,15 @@ Jsx helps us write code in html syntax inside javascript.
 Es6 is compiled to es5 in browsers through babel
 
 
+components:
+These are like building blocks of react. They are parent component and child component. 
+
+props:
+this is the data that gets passed. 
+
+state:
+This is the initial state. child/parent cocmponenet can have its own state.
+
+
+
+

@@ -71,6 +71,47 @@ import React, { Component } from 'react';
 // ReactDOM.render(<ReactClass />, document.getElementById("root"));
 
 
+// setting a state 
+// ************************
+
+// child 
+var User = React.createClass({
+
+  getInitialState: function(){
+    return {
+      rstatus: false
+    } 
+  }, 
+
+
+
+  render: function () {
+    
+  }
+
+});
+
+
+
+// parent of User
+var App = React.createClass({
+  render: function () {
+    return (
+      <div> 
+        <h1> Users List </h1>
+        <User name = "Brad"/>
+        <User name = "Mary"/>
+      </div>
+    )
+  } 
+});
+
+
+// parent of App
+ReactDOM.render(<App/>, document.getElementById("root"));
+
+
+
 
 
 
