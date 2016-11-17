@@ -66,3 +66,4 @@ this is the data that gets passed.
 
 state:
 This is the initial state. child/parent cocmponenet can have its own state.
+
