@@ -74,9 +74,11 @@ import React, { Component } from 'react';
 // setting a state 
 // ************************
 
-// child 
+// child  component
 var User = React.createClass({
 
+
+// setting the initial state of the app
   getInitialState: function(){
     return {
       rstatus: false
@@ -86,8 +88,26 @@ var User = React.createClass({
 
 
   render: function () {
-    
+		var terinaryOperator = this.state.rstatus ? 'in relationship' : 'single';
+
+		return (
+      <div> 
+        <p>name: {this.props.name} </p>
+        <p>status: {terinaryOperator} </p>
+        <button onClick={this.changeStatus}> click to change </button>
+      </div>
+    )  
+  },
+
+
+  // adding an event. WE can add our own event name
+  changeStatus: function() {
+    console.log("clicked");
+    this.setState({
+    	rstatus: !this.state.rstatus
+    })  
   }
+
 
 });
 
