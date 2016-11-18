@@ -74,61 +74,65 @@ import React, { Component } from 'react';
 // setting a state 
 // ************************
 
-// child  component
-var User = React.createClass({
+// // child  component
+// var User = React.createClass({
 
 
-// setting the initial state of the app
-  getInitialState: function(){
-    return {
-      rstatus: false
-    } 
-  }, 
-
-
-
-  render: function () {
-		var terinaryOperator = this.state.rstatus ? 'in relationship' : 'single';
-
-		return (
-      <div> 
-        <p>name: {this.props.name} </p>
-        <p>status: {terinaryOperator} </p>
-        <button onClick={this.changeStatus}> click to change </button>
-      </div>
-    )  
-  },
-
-
-  // adding an event. WE can add our own event name
-  changeStatus: function() {
-    console.log("clicked");
-    this.setState({
-    	rstatus: !this.state.rstatus
-    })  
-  }
-
-
-});
+// // setting the initial state of the app
+//   getInitialState: function(){
+//     return {
+//       rstatus: false
+//     } 
+//   }, 
 
 
 
-// parent of User
-var App = React.createClass({
-  render: function () {
-    return (
-      <div> 
-        <h1> Users List </h1>
-        <User name = "Brad"/>
-        <User name = "Mary"/>
-      </div>
-    )
-  } 
-});
+//   render: function () {
+// 		var terinaryOperator = this.state.rstatus ? 'in relationship' : 'single';
+
+// 		return (
+//       <div> 
+//         <p>name: {this.props.name} </p>
+//         <p>status: {terinaryOperator} </p>
+//         <button onClick={this.changeStatus}> click to change </button>
+//       </div>
+//     )  
+//   },
 
 
-// parent of App
-ReactDOM.render(<App/>, document.getElementById("root"));
+//   // adding an event. WE can add our own event name
+//   changeStatus: function() {
+//     console.log("clicked");
+//     this.setState({
+//     	rstatus: !this.state.rstatus
+//     })  
+//   }
+
+
+// });
+
+
+
+// // parent of User
+// var App = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//         <h1> Users List </h1>
+//         <User name = "Brad"/>
+//         <User name = "Mary"/>
+//       </div>
+//     )
+//   } 
+// });
+
+
+// // parent of App
+// ReactDOM.render(<App/>, document.getElementById("root"));
+
+
+// setting a state 
+// ************************
 
 
 
