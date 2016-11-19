@@ -1,6 +1,7 @@
 // import React from 'react';
 import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
+import  axios from 'axios'
 
 
 // instead of typing React.Component hust use an import from the module
@@ -192,7 +193,46 @@ import React, { Component } from 'react';
 // ReactDOM.render(<App/>, document.getElementById("root"));
 
 
-// creating functional component
+// // creating functional component
+// // *****************************
+
+// // this is one way of creating a component using createclass
+// // var User = React.createClass({
+// //   render: function () {
+// //     return (
+// //       <div>{this.props.name} </div>
+// //     )
+// //   }
+// // })
+
+
+// // another way of creating a component is by creating functions
+// var User = function(props) {
+//   return (
+//     <div>{props.name} </div>
+//   )
+// }
+
+
+
+// // parent of User
+// var App = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//         <User name = "Harry"/>
+//         <User name = "Barry"/>
+//       </div>
+//     )
+//   } 
+// });
+
+
+// ReactDOM.render(<App/>, document.getElementById("root"));
+
+
+
+// ajax request to (http://pokeapi.co/api/v2/ability/34/) and also adding `axios npm` to make http request from the browser
 // *****************************
 
 // this is one way of creating a component using createclass
@@ -216,11 +256,34 @@ var User = function(props) {
 
 // parent of User
 var App = React.createClass({
+
+  getInitialState: function() {
+    return {
+      pokies: []
+    } 
+  },
+
+  componentDidMount: function() {
+    var that  = this;
+    axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
+    // console.log(response.data.pokemon);
+    that.setState({
+      pokies: response.data.pokemon
+    })
+  })
+    
+  },
+
   render: function () {
+
+    console.log(this.state.pokies) //this  gives two console.logs
     return (
-      <div> 
-        <User name = "Harry"/>
-        <User name = "Barry"/>
+      <div>
+      {this.state.pokies.map(function(eachpoki){
+        return <User key={eachpoki.id} name= {eachpoki} /> 
+      })} 
+      
+     
       </div>
     )
   } 
@@ -228,6 +291,7 @@ var App = React.createClass({
 
 
 ReactDOM.render(<App/>, document.getElementById("root"));
+
 
 
 
