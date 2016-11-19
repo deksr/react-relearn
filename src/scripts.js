@@ -131,47 +131,86 @@ import React, { Component } from 'react';
 // ReactDOM.render(<App/>, document.getElementById("root"));
 
 
+// // setting a component did mount 
+// // ************************
+// // Note that when we want to pass the information from the parent component to the child component then we have to pass the data in this.props only. These props can be used to set the state too alsongside using the this.state to set the data.But state belonsg to only that component 
+
+// // child  component
+// var User = React.createClass({
+
+
+//   // setting the initial state of the app
+//   getInitialState: function(){
+//     return {
+//       rstatus: "girl"
+//     } 
+//   }, 
+
+
+//   //this is another component api that talks to dom.
+//   // you can even set  this.props or/and this.state after the comonent has mounted. You can add ajax in comonentdidmount
+//   componentDidMount: function() {
+//   	this.setState({
+//     	rstatus: this.props.name + "*-----*" + this.state.rstatus
+//     })	
+
+//    // you can have multiple this.setstate
+//     // this.setState({
+//     // 	rstatus: this.props.name + "hhjgjgjh"
+//     // })	
+//   },
+
+
+
+//   render: function () {
+// 		return (
+//       <div> 
+//         <p>name: {this.props.name} </p>
+//         <p>status: {this.state.rstatus} </p>
+//         <button onClick={this.changeStatus}> click to change </button>
+//       </div>
+//     )  
+//   }
+// });
+
+
+
+// // parent of User
+// var App = React.createClass({
+//   render: function () {
+//     return (
+//       <div> 
+//         <h1> Users List </h1>
+//         <User name = "Harry"/>
+//       </div>
+//     )
+//   } 
+// });
+
+
+// // parent of App
+// ReactDOM.render(<App/>, document.getElementById("root"));
+
+
 // setting a component did mount 
 // ************************
-// Note that when we want to pass the information from the parent component to the child component then we have to pass the data in this.props only. These props can be used to set the state too alsongside using the this.state to set the data.But state belonsg to only that component 
 
-// child  component
-var User = React.createClass({
-
-
-  // setting the initial state of the app
-  getInitialState: function(){
-    return {
-      rstatus: "girl"
-    } 
-  }, 
+// this is one way of creating a component using createclass
+// var User = React.createClass({
+//   render: function () {
+//     return (
+//       <div>{this.props.name} </div>
+//     )
+//   }
+// })
 
 
-  //this is another component api that talks to dom.
-  // you can even set  this.props or/and this.state after the comonent has mounted. You can add ajax in comonentdidmount
-  componentDidMount: function() {
-  	this.setState({
-    	rstatus: this.props.name + "*-----*" + this.state.rstatus
-    })	
-
-   // you can have multiple this.setstate
-    // this.setState({
-    // 	rstatus: this.props.name + "hhjgjgjh"
-    // })	
-  },
-
-
-
-  render: function () {
-		return (
-      <div> 
-        <p>name: {this.props.name} </p>
-        <p>status: {this.state.rstatus} </p>
-        <button onClick={this.changeStatus}> click to change </button>
-      </div>
-    )  
-  }
-});
+// another way of creating a component is by creating functions
+var User = function(props) {
+  return (
+    <div>{props.name} </div>
+  )
+}
 
 
 
@@ -180,16 +219,16 @@ var App = React.createClass({
   render: function () {
     return (
       <div> 
-        <h1> Users List </h1>
         <User name = "Harry"/>
+        <User name = "Barry"/>
       </div>
     )
   } 
 });
 
 
-// parent of App
 ReactDOM.render(<App/>, document.getElementById("root"));
+
 
 
 
