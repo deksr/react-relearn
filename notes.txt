@@ -73,3 +73,4 @@ Note that when we want to pass the information from the parent component to the 
 UsE axio to do ajax call. 
 
 
+
