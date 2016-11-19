@@ -70,3 +70,6 @@ This is the initial state. child/parent cocmponenet can have its own state.
 Note that when we want to pass the information from the parent component to the child component then we have to pass the data in this.props only. These props can be used to set the state too alsongside using the this.state to set the data.But state belonsg to only that component 
 
 
+UsE axio to do ajax call. 
+
+
