@@ -193,7 +193,7 @@ import React, { Component } from 'react';
 
 
 // creating functional component
-// ************************
+// *****************************
 
 // this is one way of creating a component using createclass
 // var User = React.createClass({
