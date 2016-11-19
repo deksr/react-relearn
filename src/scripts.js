@@ -235,17 +235,6 @@ import  axios from 'axios'
 // ajax request to (http://pokeapi.co/api/v2/ability/34/) and also adding `axios npm` to make http request from the browser
 // *****************************
 
-// this is one way of creating a component using createclass
-// var User = React.createClass({
-//   render: function () {
-//     return (
-//       <div>{this.props.name} </div>
-//     )
-//   }
-// })
-
-
-// another way of creating a component is by creating functions
 var User = function(props) {
   return (
     <div>{props.name} </div>
@@ -254,7 +243,6 @@ var User = function(props) {
 
 
 
-// parent of User
 var App = React.createClass({
 
   getInitialState: function() {
@@ -276,14 +264,17 @@ var App = React.createClass({
 
   render: function () {
 
-    console.log(this.state.pokies) //this  gives two console.logs
+    // console.log(this.state.pokies) //this  gives two console.logs
+    // this.state.pokies.map(function(ep){
+    // console.log(ep.pokemon.name)
+    // })
+
     return (
       <div>
-      {this.state.pokies.map(function(eachpoki){
-        return <User key={eachpoki.id} name= {eachpoki} /> 
-      })} 
-      
-     
+        {this.state.pokies.map(function(eachpoki){
+            return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
+            })} 
+        
       </div>
     )
   } 
