@@ -192,7 +192,7 @@ import React, { Component } from 'react';
 // ReactDOM.render(<App/>, document.getElementById("root"));
 
 
-// setting a component did mount 
+// creating functional component
 // ************************
 
 // this is one way of creating a component using createclass
