@@ -288,7 +288,6 @@ import Modal from 'react-modal';
 // creating a modal (importing external library)
 // *****************************
 
-var appElement = document.getElementById('your-app-element');
 
 const customStyles = {
   content : {
@@ -301,58 +300,49 @@ const customStyles = {
   }
 };
 
-var Modalstuff = React.createClass({
+
+// ***********
+var User = React.createClass ({
 
   getInitialState: function() {
-    return { modalIsOpen: false };
+    return {
+      modalIsOpen: false
+    } 
   },
 
-  openModal: function() {
+    openModal: function() {
     this.setState({modalIsOpen: true});
-  },
-
-  afterOpenModal: function() {
-    // references are now sync'd and can be accessed.
-    this.refs.subtitle.style.color = '#f00';
   },
 
   closeModal: function() {
     this.setState({modalIsOpen: false});
   },
 
-  render: function() {
+
+  render: function () {
+
     return (
       <div>
-        <button onClick={this.openModal}>Open Modal</button>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
-        >
+        <button onClick={this.openModal}> {this.props.name}</button>
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Example Modal"
+          >
 
           <h2 ref="subtitle">Hello</h2>
           <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
+          <div>I am {this.props.name}. read more about me </div>
           <form>
             <input />
             <button>submit</button>
           </form>
-        </Modal>
-      </div>
-    );
-  }
-
-  
+          </Modal>
+      </div> 
+    )
+  } 
 })
-
-// ***********
-var User = function(props) {
-  return (
-    <div>{props.name} </div>
-  )
-}
 
 
 
@@ -360,7 +350,8 @@ var Users = React.createClass({
 
   getInitialState: function() {
     return {
-      pokies: []
+      pokies: [],
+      modalIsOpen: false
     } 
   },
 
@@ -368,12 +359,13 @@ var Users = React.createClass({
     var that  = this;
     axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
     // console.log(response.data.pokemon);
-    that.setState({
-      pokies: response.data.pokemon
-    })
-  })
-    
+      that.setState({
+        pokies: response.data.pokemon
+      })
+    })  
   },
+
+
 
   render: function () {
 
@@ -386,16 +378,15 @@ var Users = React.createClass({
       <div>
         {this.state.pokies.map(function(eachpoki){
             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
-            })} 
-        
+            })}  
       </div>
     )
   } 
 });
 
 
-{/*ReactDOM.render(<Users/>, document.getElementById("root"));*/}
-ReactDOM.render(<Modalstuff/>, appElement);
+ReactDOM.render(<Users/>, document.getElementById("root"));
+{/*ReactDOM.render(<Modalstuff/>, document.getElementById('your-app-element'));*/}
 
 
 
