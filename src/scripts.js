@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import  axios from 'axios';
 import Modal from 'react-modal';
+import {Router, Route, browserHistory, Link} from 'react-router'
 
 
 // instead of typing React.Component hust use an import from the module
@@ -285,64 +286,19 @@ import Modal from 'react-modal';
 // ReactDOM.render(<Users/>, document.getElementById("root"));
 
 
-// creating a modal (importing external library)
+
+
+
+
+
+// adding the router and converting it into single page
 // *****************************
 
-
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
-
-
-// ***********
-var User = React.createClass ({
-
-  getInitialState: function() {
-    return {
-      modalIsOpen: false
-    } 
-  },
-
-    openModal: function() {
-    this.setState({modalIsOpen: true});
-  },
-
-  closeModal: function() {
-    this.setState({modalIsOpen: false});
-  },
-
-
-  render: function () {
-
-    return (
-      <div>
-        <button onClick={this.openModal}> {this.props.name}</button>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            onRequestClose={this.closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-          >
-
-          <h2 ref="subtitle">Hello</h2>
-          <button onClick={this.closeModal}>close</button>
-          <div>I am {this.props.name}. read more about me </div>
-          <form>
-            <input />
-            <button>submit</button>
-          </form>
-          </Modal>
-      </div> 
-    )
-  } 
-})
+var User = function(props) {
+  return (
+    <div>{props.name} </div>
+  )
+}
 
 
 
@@ -350,8 +306,7 @@ var Users = React.createClass({
 
   getInitialState: function() {
     return {
-      pokies: [],
-      modalIsOpen: false
+      pokies: []
     } 
   },
 
@@ -359,13 +314,12 @@ var Users = React.createClass({
     var that  = this;
     axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
     // console.log(response.data.pokemon);
-      that.setState({
-        pokies: response.data.pokemon
-      })
-    })  
+    that.setState({
+      pokies: response.data.pokemon
+    })
+  })
+    
   },
-
-
 
   render: function () {
 
@@ -376,32 +330,135 @@ var Users = React.createClass({
 
     return (
       <div>
+      <Link to="/otherpage"> visit other page </Link>
         {this.state.pokies.map(function(eachpoki){
             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
-            })}  
+            })} 
+        
       </div>
     )
   } 
 });
 
 
-ReactDOM.render(<Users/>, document.getElementById("root"));
-{/*ReactDOM.render(<Modalstuff/>, document.getElementById('your-app-element'));*/}
+// create a steless component: this basically means a function without class
+
+var Other = function(){
+  return (
+    <div> 
+      Hello there from other page
+    </div>
+  )
+}
+
+
+ReactDOM.render((
+  <Router history={browserHistory}> 
+    <Route path="/" component ={Users}/> 
+    <Route path="/otherpage" component ={Other}/> 
+  </Router>), document.getElementById("root")
+);
+
+
+// creating a modal (importing external library)
+// *****************************
+
+
+// const customStyles = {
+//   content : {
+//     top                   : '50%',
+//     left                  : '50%',
+//     right                 : 'auto',
+//     bottom                : 'auto',
+//     marginRight           : '-50%',
+//     transform             : 'translate(-50%, -50%)'
+//   }
+// };
+
+
+// // ***********
+// var User = React.createClass ({
+
+//   getInitialState: function() {
+//     return {
+//       modalIsOpen: false
+//     } 
+//   },
+
+//     openModal: function() {
+//     this.setState({modalIsOpen: true});
+//   },
+
+//   closeModal: function() {
+//     this.setState({modalIsOpen: false});
+//   },
+
+
+//   render: function () {
+
+//     return (
+//       <div>
+//         <button onClick={this.openModal}> {this.props.name}</button>
+//           <Modal
+//             isOpen={this.state.modalIsOpen}
+//             onRequestClose={this.closeModal}
+//             style={customStyles}
+//             contentLabel="Example Modal"
+//           >
+
+//           <h2 ref="subtitle">Hello</h2>
+//           <button onClick={this.closeModal}>close</button>
+//           <div>I am {this.props.name}. read more about me </div>
+//           <form>
+//             <input />
+//             <button>submit</button>
+//           </form>
+//           </Modal>
+//       </div> 
+//     )
+//   } 
+// })
 
 
 
+// var Users = React.createClass({
+
+//   getInitialState: function() {
+//     return {
+//       pokies: [],
+//       modalIsOpen: false
+//     } 
+//   },
+
+//   componentDidMount: function() {
+//     var that  = this;
+//     axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
+//     // console.log(response.data.pokemon);
+//       that.setState({
+//         pokies: response.data.pokemon
+//       })
+//     })  
+//   },
 
 
 
+//   render: function () {
+
+//     // console.log(this.state.pokies) //this  gives two console.logs
+//     // this.state.pokies.map(function(ep){
+//     // console.log(ep.pokemon.name)
+//     // })
+
+//     return (
+//       <div>
+//         {this.state.pokies.map(function(eachpoki){
+//             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
+//             })}  
+//       </div>
+//     )
+//   } 
+// });
 
 
-
-
-
-
-
-
-
-
-
-
+// ReactDOM.render(<Users/>, document.getElementById("root"));
+// {/*ReactDOM.render(<Modalstuff/>, document.getElementById('your-app-element'));*/}
