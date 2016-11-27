@@ -235,53 +235,53 @@ import  axios from 'axios'
 // ajax request to (http://pokeapi.co/api/v2/ability/34/) and also adding `axios npm` to make http request from the browser
 // *****************************
 
-// var User = function(props) {
-//   return (
-//     <div>{props.name} </div>
-//   )
-// }
+var User = function(props) {
+  return (
+    <div>{props.name} </div>
+  )
+}
 
 
 
-// var Users = React.createClass({
+var Users = React.createClass({
 
-//   getInitialState: function() {
-//     return {
-//       pokies: []
-//     } 
-//   },
+  getInitialState: function() {
+    return {
+      pokies: []
+    } 
+  },
 
-//   componentDidMount: function() {
-//     var that  = this;
-//     axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
-//     // console.log(response.data.pokemon);
-//     that.setState({
-//       pokies: response.data.pokemon
-//     })
-//   })
+  componentDidMount: function() {
+    var that  = this;
+    axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
+    // console.log(response.data.pokemon);
+    that.setState({
+      pokies: response.data.pokemon
+    })
+  })
     
-//   },
+  },
 
-//   render: function () {
+  render: function () {
 
-//     // console.log(this.state.pokies) //this  gives two console.logs
-//     // this.state.pokies.map(function(ep){
-//     // console.log(ep.pokemon.name)
-//     // })
+    // console.log(this.state.pokies) //this  gives two console.logs
+    // this.state.pokies.map(function(ep){
+    // console.log(ep.pokemon.name)
+    // })
 
-//     return (
-//       <div>
-//         {this.state.pokies.map(function(eachpoki){
-//             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
-//             })} 
+    return (
+      <div>
+        {this.state.pokies.map(function(eachpoki){
+            return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
+            })} 
         
-//       </div>
-//     )
-//   } 
-// });
+      </div>
+    )
+  } 
+});
 
 
-// ReactDOM.render(<Users/>, document.getElementById("root"));
+ReactDOM.render(<Users/>, document.getElementById("root"));
 
 
 
