@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import  axios from 'axios';
 import Modal from 'react-modal';
-import {Router, Route, browserHistory, Link} from 'react-router'
+import {Router, Route, browserHistory, Link, IndexRoute} from 'react-router'
+
+import PartialLayout from './partials.js'
 
 
 // instead of typing React.Component hust use an import from the module
@@ -354,8 +356,11 @@ var Other = function(){
 
 ReactDOM.render((
   <Router history={browserHistory}> 
-    <Route path="/" component ={Users}/> 
-    <Route path="/otherpage" component ={Other}/> 
+    <Route path="/" component={PartialLayout}>
+      <IndexRoute path="/people" component ={Users}/> 
+      <Route path="/otherpage" component ={Other}/>
+    </Route>
+ 
   </Router>), document.getElementById("root")
 );
 
