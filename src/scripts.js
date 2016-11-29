@@ -8,6 +8,8 @@ import {Router, Route, browserHistory, Link, IndexRoute} from 'react-router'
 import PartialLayout from './partials.js'
 import UserProfile from './userprofile.js'
 
+import {getallpeople} from './xhr/index'
+
 
 
 // instead of typing React.Component hust use an import from the module
@@ -295,7 +297,80 @@ import UserProfile from './userprofile.js'
 
 
 
-// adding the router and converting it into single page
+// // adding the router and converting it into single page
+// // *****************************
+
+// var User = function(props) {
+//   return (
+//     <div>{props.name} </div>
+//   )
+// }
+
+
+
+// var Users = React.createClass({
+
+//   getInitialState: function() {
+//     return {
+//       pokies: []
+//     } 
+//   },
+
+//   componentDidMount: function() {
+//     var that  = this;
+//     axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
+//     // console.log(response.data.pokemon);
+//     that.setState({
+//       pokies: response.data.pokemon
+//     })
+//   })
+    
+//   },
+
+//   render: function () {
+
+//     // console.log(this.state.pokies) //this  gives two console.logs
+//     // this.state.pokies.map(function(ep){
+//     // console.log(ep.pokemon.name)
+//     // })
+
+//     return (
+//       <div>
+//       <Link to="/user-profile-page"> visit other page </Link>
+//         {this.state.pokies.map(function(eachpoki){
+//             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
+//             })} 
+        
+//       </div>
+//     )
+//   } 
+// });
+
+
+// // create a steless component: this basically means a function without class
+
+// var Other = function(){
+//   return (
+//     <div> 
+//       Hello there from other page
+//     </div>
+//   )
+// }
+
+
+// ReactDOM.render((
+//   <Router history={browserHistory}> 
+//     <Route path="/" component={PartialLayout}>
+//       <IndexRoute path="/people" component ={Users}/> 
+//       <Route path="/user-profile-page" component ={UserProfile}/>
+//     </Route>
+ 
+//   </Router>), document.getElementById("root")
+// );
+
+
+
+// creating xhr
 // *****************************
 
 var User = function(props) {
@@ -316,7 +391,7 @@ var Users = React.createClass({
 
   componentDidMount: function() {
     var that  = this;
-    axios.get('http://pokeapi.co/api/v2/ability/34/').then(function (response) {
+    getallpeople().then(function (response) {
     // console.log(response.data.pokemon);
     that.setState({
       pokies: response.data.pokemon
@@ -365,6 +440,7 @@ ReactDOM.render((
  
   </Router>), document.getElementById("root")
 );
+
 
 
 // creating a modal (importing external library)
