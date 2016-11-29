@@ -80,4 +80,7 @@ UsE axio to do ajax call.
 while using react router, use <Link to> instead of <a href>. se the github commit to get an idea
 
 
+when we create different components and put them in different files. lets say src folder has components folder within which there are many components like users, user etc which are being exported to the scripts.js. Make sure that while you are importing from one file to another, use `import user from '/user.js'` instead of `import user from ./component/user.js`. this is because we are importing within in the same folder component.
+
+
 

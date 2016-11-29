@@ -6,6 +6,8 @@ import Modal from 'react-modal';
 import {Router, Route, browserHistory, Link, IndexRoute} from 'react-router'
 
 import PartialLayout from './partials.js'
+import UserProfile from './userprofile.js'
+
 
 
 // instead of typing React.Component hust use an import from the module
@@ -332,7 +334,7 @@ var Users = React.createClass({
 
     return (
       <div>
-      <Link to="/otherpage"> visit other page </Link>
+      <Link to="/user-profile-page"> visit other page </Link>
         {this.state.pokies.map(function(eachpoki){
             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
             })} 
@@ -358,7 +360,7 @@ ReactDOM.render((
   <Router history={browserHistory}> 
     <Route path="/" component={PartialLayout}>
       <IndexRoute path="/people" component ={Users}/> 
-      <Route path="/otherpage" component ={Other}/>
+      <Route path="/user-profile-page" component ={UserProfile}/>
     </Route>
  
   </Router>), document.getElementById("root")
