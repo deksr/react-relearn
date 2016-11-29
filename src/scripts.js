@@ -370,12 +370,86 @@ import {getallpeople} from './xhr/index'
 
 
 
-// creating xhr
+// // creating xhr
+// // *****************************
+
+// var User = function(props) {
+//   return (
+//     <div>{props.name} </div>
+//   )
+// }
+
+
+
+// var Users = React.createClass({
+
+//   getInitialState: function() {
+//     return {
+//       pokies: []
+//     } 
+//   },
+
+//   componentDidMount: function() {
+//     var that  = this;
+//     getallpeople().then(function (response) {
+//     // console.log(response.data.pokemon);
+//     that.setState({
+//       pokies: response.data.pokemon
+//     })
+//   })
+    
+//   },
+
+//   render: function () {
+
+//     // console.log(this.state.pokies) //this  gives two console.logs
+//     // this.state.pokies.map(function(ep){
+//     // console.log(ep.pokemon.name)
+//     // })
+
+//     return (
+//       <div>
+//       <Link to="/user-profile-page"> visit other page </Link>
+//         {this.state.pokies.map(function(eachpoki){
+//             return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
+//             })} 
+        
+//       </div>
+//     )
+//   } 
+// });
+
+
+// // create a steless component: this basically means a function without class
+
+// var Other = function(){
+//   return (
+//     <div> 
+//       Hello there from other page
+//     </div>
+//   )
+// }
+
+
+// ReactDOM.render((
+//   <Router history={browserHistory}> 
+//     <Route path="/" component={PartialLayout}>
+//       <IndexRoute path="/people" component ={Users}/> 
+//       <Route path="/user-profile-page" component ={UserProfile}/>
+//     </Route>
+ 
+//   </Router>), document.getElementById("root")
+// );
+
+
+
+
+// creating userprofile component with param
 // *****************************
 
 var User = function(props) {
   return (
-    <div>{props.name} </div>
+    <div><Link to ={"/user-profile-page/" + props.id} > {props.name} </Link></div>
   )
 }
 
@@ -393,26 +467,27 @@ var Users = React.createClass({
     var that  = this;
     getallpeople().then(function (response) {
     // console.log(response.data.pokemon);
-    that.setState({
-      pokies: response.data.pokemon
-    })
-  })
-    
+      that.setState({
+        pokies: response.data.pokemon
+      })
+    })  
   },
 
   render: function () {
 
     // console.log(this.state.pokies) //this  gives two console.logs
-    // this.state.pokies.map(function(ep){
-    // console.log(ep.pokemon.name)
-    // })
+    this.state.pokies.map(function(ep){
+    console.log(ep.pokemon.url)
+    })
 
     return (
       <div>
       <Link to="/user-profile-page"> visit other page </Link>
         {this.state.pokies.map(function(eachpoki){
-            return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name} /> 
-            })} 
+          var identification= eachpoki.pokemon.url.split('/')
+          {/*// console.log(identification[6]  since we dont have id for this, it is a hacky way of doing things)*/}
+          return <User key={eachpoki.pokemon.id} name= {eachpoki.pokemon.name}  id={identification[6]}/> 
+        })} 
         
       </div>
     )
@@ -435,7 +510,7 @@ ReactDOM.render((
   <Router history={browserHistory}> 
     <Route path="/" component={PartialLayout}>
       <IndexRoute path="/people" component ={Users}/> 
-      <Route path="/user-profile-page" component ={UserProfile}/>
+      <Route path="/user-profile-page/:id" component ={UserProfile}/>
     </Route>
  
   </Router>), document.getElementById("root")
